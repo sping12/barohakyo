@@ -6,6 +6,6 @@
     <title>바로학교?</title>
   </head>
   <body>
-    <a href="test.html">링크테스트</
+    <a href="test.html">링크테스트</a>
   </body>
 </html>
