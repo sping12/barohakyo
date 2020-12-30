@@ -1,0 +1,172 @@
+<html>
+<head>
+	<title>규칙퀴즈</title>
+
+<script language="javascript">
+var delay=10; //시간설정
+var correctAnswers=new Array("c","a","d","b","c");  //정답
+
+var q_num=1;
+var timer;
+var layer;
+var clock=delay;
+var score=0;
+
+function show_question(){
+	if (layer=eval("document.all.question"+q_num)){
+		layer.style.display="inline";
+		document.all.timeLeft.innerHTML=clock;
+		hide_question();
+	} else {
+		document.all.timeLeft.innerHTML=0;
+		document.all.quizScore.innerHTML="당신은 "+(q_num-1)+"문제중 "+score+"개를 맞췄습니다.";
+		document.all.quizScore.style.display="inline";
+	}
+}
+
+function hide_question(){
+	if (clock>0) {
+		document.all.timeLeft.innerHTML=clock;
+		clock--;
+		timer=setTimeout("hide_question()",1000);
+	} else {
+		clearTimeout(timer);
+		document.all.answerBoard.innerHTML=" ";
+		clock=delay;
+		layer.style.display="none";
+		q_num++;
+		show_question();
+	}
+}
+
+function check_answer(answer){
+	if (correctAnswers[q_num-1]==answer){
+		score++;
+		document.all.answerBoard.innerHTML="<font color=blue><b>정답입니다.</b></font>";
+	} else {
+		document.all.answerBoard.innerHTML="<font color=red><b>땡! 틀렸습니다.</b></font>";
+	}
+	clock=0;
+	clearTimeout(timer);
+	timer=setTimeout("hide_question()",700);
+}
+
+window.onload=show_question;
+</script>
+<style>
+  td, tr{width:40px;height:40px}
+	.oranget{background-color:orange;}
+	.pinkt{background-color:pink;}
+	.greent{background-color:green;}
+	.ntt{background-color:none;text-align:center;}
+	.blackt{background-color:black;}
+</style>
+</head>
+
+<body>
+
+제한시간 : <B><span id="timeLeft"></span></B> 초<br>
+<br>
+<div id="answerBoard"> </div>
+<br>
+
+<div id="question1" style="display:none">
+  <img style="width:300px;" class='img11' src="https://i.ibb.co/5FB4DSN/Kakao-Talk-20201229-125711518-01-1.jpg" /><br>
+	<b>1. 흰돌 다음에 나와야 하는 것은 무엇일가요?</b><br>
+	<a href="javascript:void(0)" onclick="check_answer('a')">a) 검은돌 한개</a><br>
+	<a href="javascript:void(0)" onclick="check_answer('b')">b) 흰돌 한개</a><br>
+	<a href="javascript:void(0)" onclick="check_answer('c')">c) 검은돌 다섯개</a><br>
+	<a href="javascript:void(0)" onclick="check_answer('d')">d) 흰돌 다섯개</a><br>
+</div>
+
+<div id="question2" style="display:none">
+<img style="width:300px" class='img11' src="https://i.ibb.co/kGBsP8L/Kakao-Talk-20201229-125711518-01.jpg" /><br />
+<b>2. 다음에 나올 나무막대의 갯수는 몇개인가요?</b><br>
+<a href="javascript:void(0)" onclick="check_answer('a')">a) 8개</a><br>
+<a href="javascript:void(0)" onclick="check_answer('b')">b) 10개</a><br>
+<a href="javascript:void(0)" onclick="check_answer('c')">c) 12개</a><br>
+<a href="javascript:void(0)" onclick="check_answer('d')">d) 14개</a><br>
+</div>
+
+<div id="question3" style="display:none">
+<img style="width:300px" class='img11' src="https://i.ibb.co/8K9wthC/Kakao-Talk-20201229-125711518-02.jpg" /><br />
+<b>3. 다섯번째에 쌓아야 할 나무블록의 갯수는 몇 개일까요?</b><br>
+<a href="javascript:void(0)" onclick="check_answer('a')">a) 2개</a><br>
+<a href="javascript:void(0)" onclick="check_answer('b')">b) 3개</a><br>
+<a href="javascript:void(0)" onclick="check_answer('c')">c) 4개</a><br>
+<a href="javascript:void(0)" onclick="check_answer('d')">d) 5개</a><br>
+</div>
+
+<div id="question4" style="display:none">
+	<table border="1" aria-describedat="summary">
+		<tr>
+					<td class="ntt"></td>
+					<td class="ntt"></td>
+					<td class="ntt"></td>
+					<td class="greent"></td>
+		</tr>
+		<tr>
+					<td class="ntt"></td>
+					<td class="ntt"></td>
+					<td class="oranget"></td>
+					<td class="greent"></td>
+		</tr>
+		<tr>
+					<td class="ntt"></td>
+					<td class="pinkt"></td>
+					<td class="oranget"></td>
+					<td class="greent"></td>
+		</tr>
+		<tr>
+					<td class="blackt"></td>
+					<td class="pinkt"></td>
+					<td class="oranget"></td>
+					<td class="ntt">정답</td>
+		</tr>
+	</table>
+<b>4. 다음 중 '정답'칸에 들어갈 색으로 알맞은 것은 무엇인가요?</b><br>
+<a href="javascript:void(0)" onclick="check_answer('a')">a) 검정</a><br>
+<a href="javascript:void(0)" onclick="check_answer('b')">b) 초록</a><br>
+<a href="javascript:void(0)" onclick="check_answer('c')">c) 주황</a><br>
+<a href="javascript:void(0)" onclick="check_answer('d')">d) 분홍</a><br>
+</div>
+
+<div id="question5" style="display:none">
+<table border="1" aria-describedat="summary">
+	<tr>
+				<td class="oranget"></td>
+				<td class="pinkt"></td>
+				<td class="greent"></td>
+				<td class="ntt">1번</td>
+	</tr>
+	<tr>
+				<td class="pinkt"></td>
+				<td class="greent"></td>
+				<td class="oranget"></td>
+				<td class="ntt">2번</td>
+	</tr>
+	<tr>
+				<td class="greent"></td>
+				<td class="oranget"></td>
+				<td class="pinkt"></td>
+				<td class="ntt">3번</td>
+	</tr>
+	<tr>
+				<td class="oranget"></td>
+				<td class="pinkt"></td>
+				<td class="greent"></td>
+				<td class="ntt">4번</td>
+	</tr>
+</table>
+<b>5. 위 그림에서 빈칸에 들어갈 색으로 알맞게 짝지어진 것은 무엇인가요?</b><br>
+<a href="javascript:void(0)" onclick="check_answer('a')">a) 1번 - 분홍색 </a><br>
+<a href="javascript:void(0)" onclick="check_answer('b')">b) 2번 - 주황색 </a><br>
+<a href="javascript:void(0)" onclick="check_answer('c')">c) 3번 - 초록색 </a><br>
+<a href="javascript:void(0)" onclick="check_answer('d')">d) 4번 - 분홍색 </a><br>
+</div>
+
+<div id="quizScore" style="display:none">
+</div>
+
+</body>
+</html>
